@@ -5,12 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BresoDEV Photoshop</title>
+    <title>Photoshp</title>
 </head>
 <style>
     .mainMenu {
         float: left;
         position: relative;
+    }
+    .mainMenu:hover, .dropdown>span:hover{
+      background: chartreuse; 
     }
 
     .dropdown {
@@ -60,8 +63,8 @@
     .mainMenu:hover,
     .dropdown>a:hover {
         background: none;
-        background-color: #305eb8;
-        box-shadow: 0 0 10px #305eb8 inset;
+        background-color: #30b860;
+         
     }
 
     .mainMenu:first-child:hover {
@@ -335,8 +338,8 @@
     function downloadImagem() {
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
-      canvas.width = imagem.width * 8;
-      canvas.height = imagem.height * 8;
+      canvas.width = imagem.width*10;
+      canvas.height = imagem.height*10;
   
       // Aplica os filtros ao contexto do canvas
       ctx.filter = window.getComputedStyle(imagem).filter;
