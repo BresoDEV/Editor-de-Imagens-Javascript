@@ -2,359 +2,340 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photoshp</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photoshp</title>
 </head>
 <style>
-    .mainMenu {
-        float: left;
-        position: relative;
-    }
-    .mainMenu:hover, .dropdown>span:hover{
-      background: chartreuse; 
-    }
-
-    .dropdown {
-        display: none;
-    }
-
-    .mainMenu>a,
-    .dropdown>a {
-        display: block;
-    }
-
-    .mainMenu:hover .dropdown {
-        display: block;
-    }
-
-    /* Style */
-    nav {
-        text-decoration: none;
-        color: #FFFFFF;
-        cursor: pointer;
-    }
-
-    .mainMenu {
-        background-color: #305eb8;
-        background: linear-gradient(#305eb8, #000000);
-        width: 30%;
-        height: 40px;
-        line-height: 40px;
-        text-align: center;
-    }
-
-    .mainMenu:first-child {
-        margin-left: 5%;
-        border-radius: 5px 0 0 5px;
-    }
-
-    .mainMenu:last-child {
-        border-radius: 0 5px 5px 0;
-    }
-
-    .dropdown {
-        background: #305eb8;
-        background: linear-gradient(#305eb8, #000000);
-        width: 100%;
-    }
-
-    .mainMenu:hover,
-    .dropdown>a:hover {
-        background: none;
-        background-color: #30b860;
-         
-    }
-
-    .mainMenu:first-child:hover {
-        border-radius: 5px 0 0 0;
-    }
-
-    .mainMenu:last-child:hover {
-        border-radius: 0 5px 0 0;
-    }
-
-    .dropdown:last-child,
-    .dropdown>a:last-child:hover {
-        border-radius: 0 0 5px 5px;
-    }
-
-    .centro img {
-    width: 70%;
-    margin-top: 20px;
-    left:15%;
+  img {
+    width: 95%;
     z-index: 0;
   }
-  html{
-    background-color: #111;
+
+  html {
+    background-color: rgb(0, 0, 0);
+  }
+
+  summary,
+  ul,
+  li,
+  details {
+    border-radius: 5px;
+    background-color: deepskyblue;
+    padding: 5px;
+    color: aliceblue;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bolder;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  input {
+    text-align: right;
+    align-items: flex-end;
+    align-content: right;
   }
 </style>
 
 <body>
-    <nav id="nav">
-        <div class="mainMenu">Arquivo
-            <div class="dropdown">
-                <input type="file" name="Abrir" id="Abrir" onchange="abririmg()" style="display:none">
-                <span id="Novo">Novo</span><br>
-                <span type="file" name="Abrir2" id="Abrir2" onchange="clicar()">Abrir</span><br>
-                <span id="Salvar" onclick="downloadImagem()">Salvar</span><br>
-                <span id="Reiniciar">Reiniciar</span><br>
-            </div>
-        </div>
-        <div class="mainMenu">Filtros
-            <div class="dropdown">
-                <span id="pretoebranco">Preto e branco</span><br>
-                <span id="negativo">Negativo</span><br>
-            </div>
-        </div>
-        <div class="mainMenu">Efeitos
-            <div class="dropdown">
-                <label for="blur">Blur:</label>
-                <input type="range" id="blur" min="0" max="20" value="0">
-            
-                <br>
-                <label for="brightness">Brilho:</label>
-                <input type="range" id="brightness" min="0" max="200" value="100">
-            
-            
-                <br>
-                <label for="contrast">Contraste:</label>
-                <input type="range" id="contrast" min="0" max="200" value="100">
-            
-            
-                <br>
-                <label for="saturate">Saturação:</label>
-                <input type="range" id="saturate" min="0" max="200" value="100">
-            
-                <br>
-            
-                <label for="hue">Rotação de Cor (Hue):</label>
-                <input type="range" id="hue" min="0" max="360" value="0">
-            
-                <br>
-            
-                <label for="grayscale">Escala de Cinza:</label>
-                <input type="range" id="grayscale" min="0" max="100" value="0">
-            
-                <br>
-            
-                <label for="sepia">Sepia:</label>
-                <input type="range" id="sepia" min="0" max="100" value="0">
-                <br>
-            
-                <label for="opacity">Opacidade:</label>
-                <input type="range" id="opacity" min="0" max="100" value="100">
-            
-                <br>
-                <label for="drop-shadow">Sombra:</label>
-                <input type="range" id="drop-shadow" min="0" max="20" value="0">
-            
-                <br>
-            </div>
-        </div>
-    </nav>
-    <br>
-    <div class="centro">
-         
-          <img id="imagem" src="cameras.jpg" alt="">
-        
-    
-      </div>
+  <input type="file" name="Abrir" id="Abrir" onchange="abririmg()" style="display:none">
+  <details>
+    <summary>Menu</summary>
+    <ul>
+      <li><span id="Novo">Novo</span></li>
+      <li><span type="file" name="Abrir2" id="Abrir2" onchange="clicar()">Abrir</span></li>
+      <li><span id="Salvar" onclick="downloadImagem()">Salvar</span></li>
+
+    </ul>
+  </details>
+  <details>
+    <summary>Filtros</summary>
+    <ul>
+      <li><span id="pretoebranco">Preto e branco</span></li>
+      <li><span id="negativo">Negativo</span></li>
+      <li><span onclick="IPhone()">IPhone Style</span></li>
+      <li><span onclick="Old()">Old Sepia</span></li>
+
+    </ul>
+  </details>
+
+  <details>
+    <summary>Efeitos</summary>
+    <ul>
+      <li>
+        <label for="blur">Blur:</label>
+        <input type="range" id="blur" min="0" max="20" value="0">
+      </li>
+      <li>
+        <label for="brightness">Brilho:</label>
+        <input type="range" id="brightness" min="0" max="200" value="100">
+
+      </li>
+      <li>
+        <label for="contrast">Contraste:</label>
+        <input type="range" id="contrast" min="0" max="200" value="100">
+
+      </li>
+      <li>
+        <label for="saturate">Saturação:</label>
+        <input type="range" id="saturate" min="0" max="200" value="100">
+
+      </li>
+      <li>
+        <label for="hue">Rotação de Cor (Hue):</label>
+        <input type="range" id="hue" min="0" max="360" value="0">
+
+      </li>
+      <li>
+        <label for="grayscale">Escala de Cinza:</label>
+        <input type="range" id="grayscale" min="0" max="100" value="0">
+
+      </li>
+      <li>
+        <label for="sepia">Sepia:</label>
+        <input type="range" id="sepia" min="0" max="100" value="0">
+
+      </li>
+      <li>
+        <label for="opacity">Opacidade:</label>
+        <input type="range" id="opacity" min="0" max="100" value="100">
+
+      </li>
+      <li>
+        <label for="drop-shadow">Sombra:</label>
+        <input type="range" id="drop-shadow" min="0" max="20" value="0">
+
+      </li>
+
+    </ul>
+  </details>
+
+
+  <br>
+
+  <center>
+    <img id="imagem" src="capabreso.jpg" alt="">
+  </center>
+
 </body>
 <script>
-    const imagem = document.getElementById('imagem');
-    const blurInput = document.getElementById('blur');
-    const brightnessInput = document.getElementById('brightness');
-    const contrastInput = document.getElementById('contrast');
-    const saturateInput = document.getElementById('saturate');
-    const hueInput = document.getElementById('hue');
-    const grayscaleInput = document.getElementById('grayscale');
-    const sepiaInput = document.getElementById('sepia');
-    const opacityInput = document.getElementById('opacity');
-    const dropShadowInput = document.getElementById('drop-shadow');
-  
-    const Arquivo = document.getElementById('Arquivo');
-    const Filtros = document.getElementById('Filtros');
-    const Efeitos = document.getElementById('Efeitos');
-    
-  
-    //const menuArquivo = document.getElementById('menuArquivo');
-    const Novo = document.getElementById('Novo');
-    const Abrir = document.getElementById('Abrir');
-    const Abrir2 = document.getElementById('Abrir2');
-    const Salvar = document.getElementById('Salvar');
-    const Reiniciar = document.getElementById('Reiniciar');
-  
-  
-    const menuFiltros = document.getElementById('menuFiltros');
-    const pretoebranco = document.getElementById('pretoebranco');
-    const negativo = document.getElementById('negativo');
-  
-    const menuEfeitos = document.getElementById('menuEfeitos');
-    const nav = document.getElementById('nav');
-  
-    
-  
-   
-   
+  const imagem = document.getElementById('imagem');
+  const blurInput = document.getElementById('blur');
+  const brightnessInput = document.getElementById('brightness');
+  const contrastInput = document.getElementById('contrast');
+  const saturateInput = document.getElementById('saturate');
+  const hueInput = document.getElementById('hue');
+  const grayscaleInput = document.getElementById('grayscale');
+  const sepiaInput = document.getElementById('sepia');
+  const opacityInput = document.getElementById('opacity');
+  const dropShadowInput = document.getElementById('drop-shadow');
+
+  const Arquivo = document.getElementById('Arquivo');
+  const Filtros = document.getElementById('Filtros');
+  const Efeitos = document.getElementById('Efeitos');
+
+
+  //const menuArquivo = document.getElementById('menuArquivo');
+  const Novo = document.getElementById('Novo');
+  const Abrir = document.getElementById('Abrir');
+  const Abrir2 = document.getElementById('Abrir2');
+  const Salvar = document.getElementById('Salvar');
+  const Reiniciar = document.getElementById('Reiniciar');
+
+
+  const menuFiltros = document.getElementById('menuFiltros');
+  const pretoebranco = document.getElementById('pretoebranco');
+  const negativo = document.getElementById('negativo');
+
+  const menuEfeitos = document.getElementById('menuEfeitos');
+
+
+
+
+
   setInterval(() => {
-    nav.style.zIndex='100';
-    imagem.style.zIndex='-1';
-    imagem.style.position='fixed';
+    //nav.style.zIndex = '100';
+    imagem.style.zIndex = '-1';
+    //imagem.style.position = 'fixed';
   }, 1);
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-    var aplicougrayscale = false;
-    var aplicounegativo = false;
-  
-    pretoebranco.addEventListener('click', () => {
-      //clicar
-      aplicougrayscale = !aplicougrayscale;
-      if(aplicougrayscale)
+
+
+
+  function IPhone() {
+    brightnessInput.value = 87;
+    contrastInput.value = 146;
+    saturateInput.value = 117;
+    aplicarFiltros();
+  }
+
+  function Old() {
+
+    brightnessInput.value = 108;
+    contrastInput.value = 200;
+    saturateInput.value = 0;
+    hueInput.value = 0;
+    grayscaleInput.value = 67;
+    sepiaInput.value = 100;
+    opacityInput.value = 100;
+    dropShadowInput.value = 0;
+    aplicarFiltros();
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  var aplicougrayscale = false;
+  var aplicounegativo = false;
+
+  pretoebranco.addEventListener('click', () => {
+    //clicar
+    aplicougrayscale = !aplicougrayscale;
+    if (aplicougrayscale)
       imagem.style.filter = 'grayscale(1)';
-      else
+    else
       imagem.style.filter = 'grayscale(0)';
-  
-    });
-  
-    negativo.addEventListener('click', () => {
-      //clicar
-      aplicounegativo = !aplicounegativo;
-      if(aplicounegativo)
+
+  });
+
+  negativo.addEventListener('click', () => {
+    //clicar
+    aplicounegativo = !aplicounegativo;
+    if (aplicounegativo)
       imagem.style.filter = 'invert(1)';
-      else
+    else
       imagem.style.filter = 'invert(0)';
-    });
-  
-  
-  
-  
-  
-    Abrir2.addEventListener('click', () => {
-      //clicar
-      Abrir.click();
-    });
-  
-  
-    function abririmg() {
-      if (Abrir.files && Abrir.files[0]) {
-        const r = new FileReader();
-        r.onload = function (e) {
-          imagem.src = e.target.result;
-        };
-        r.readAsDataURL(Abrir.files[0]);
-      }
+  });
+
+
+
+
+
+  Abrir2.addEventListener('click', () => {
+    //clicar
+    Abrir.click();
+  });
+
+
+  function abririmg() {
+    if (Abrir.files && Abrir.files[0]) {
+      const r = new FileReader();
+      r.onload = function (e) {
+        imagem.src = e.target.result;
+      };
+      r.readAsDataURL(Abrir.files[0]);
     }
-  
-  
-  
-    Reiniciar.addEventListener('click', () => {
-      window.location.reload();
-    });
-    Novo.addEventListener('click', () => {
-      window.location.reload();
-    });
-  
-  
-  
-  
-  
-  
-    function aplicarFiltros() {
-      const blurValue = blurInput.value + 'px';
-      const brightnessValue = brightnessInput.value + '%';
-      const contrastValue = contrastInput.value + '%';
-      const saturateValue = saturateInput.value + '%';
-      const hueValue = hueInput.value + 'deg';
-      const grayscaleValue = grayscaleInput.value + '%';
-      const sepiaValue = sepiaInput.value + '%';
-      const opacityValue = opacityInput.value + '%';
-      const dropShadowValue = dropShadowInput.value + 'px';
-  
+  }
+
+
+
+  Novo.addEventListener('click', () => {
+    window.location.reload();
+  });
+
+
+
+
+
+
+  function aplicarFiltros() {
+    const blurValue = blurInput.value + 'px';
+    const brightnessValue = brightnessInput.value + '%';
+    const contrastValue = contrastInput.value + '%';
+    const saturateValue = saturateInput.value + '%';
+    const hueValue = hueInput.value + 'deg';
+    const grayscaleValue = grayscaleInput.value + '%';
+    const sepiaValue = sepiaInput.value + '%';
+    const opacityValue = opacityInput.value + '%';
+    const dropShadowValue = dropShadowInput.value + 'px';
+
+    if (aplicougrayscale) {
+      if (aplicounegativo) {
+        imagem.style.filter = `invert() grayscale(1) blur(${blurValue}) brightness(${brightnessValue}) contrast(${contrastValue}) saturate(${saturateValue}) hue-rotate(${hueValue}) grayscale(${grayscaleValue}) sepia(${sepiaValue}) opacity(${opacityValue}) drop-shadow(${dropShadowValue} ${dropShadowValue} 10px rgba(0, 0, 0, 0.5))`;
+      }
+      else {
+        imagem.style.filter = `grayscale(1) blur(${blurValue}) brightness(${brightnessValue}) contrast(${contrastValue}) saturate(${saturateValue}) hue-rotate(${hueValue}) grayscale(${grayscaleValue}) sepia(${sepiaValue}) opacity(${opacityValue}) drop-shadow(${dropShadowValue} ${dropShadowValue} 10px rgba(0, 0, 0, 0.5))`;
+
+      }
+
+    }
+    else if (aplicounegativo) {
       if (aplicougrayscale) {
-        if (aplicounegativo) 
-        {
-          imagem.style.filter = `invert() grayscale(1) blur(${blurValue}) brightness(${brightnessValue}) contrast(${contrastValue}) saturate(${saturateValue}) hue-rotate(${hueValue}) grayscale(${grayscaleValue}) sepia(${sepiaValue}) opacity(${opacityValue}) drop-shadow(${dropShadowValue} ${dropShadowValue} 10px rgba(0, 0, 0, 0.5))`;
-        }
-        else
-        {
-          imagem.style.filter = `grayscale(1) blur(${blurValue}) brightness(${brightnessValue}) contrast(${contrastValue}) saturate(${saturateValue}) hue-rotate(${hueValue}) grayscale(${grayscaleValue}) sepia(${sepiaValue}) opacity(${opacityValue}) drop-shadow(${dropShadowValue} ${dropShadowValue} 10px rgba(0, 0, 0, 0.5))`;
-     
-        }
-         
+        imagem.style.filter = `invert() grayscale(1) blur(${blurValue}) brightness(${brightnessValue}) contrast(${contrastValue}) saturate(${saturateValue}) hue-rotate(${hueValue}) grayscale(${grayscaleValue}) sepia(${sepiaValue}) opacity(${opacityValue}) drop-shadow(${dropShadowValue} ${dropShadowValue} 10px rgba(0, 0, 0, 0.5))`;
       }
-      else  if (aplicounegativo) {
-        if (aplicougrayscale) 
-        {
-          imagem.style.filter = `invert() grayscale(1) blur(${blurValue}) brightness(${brightnessValue}) contrast(${contrastValue}) saturate(${saturateValue}) hue-rotate(${hueValue}) grayscale(${grayscaleValue}) sepia(${sepiaValue}) opacity(${opacityValue}) drop-shadow(${dropShadowValue} ${dropShadowValue} 10px rgba(0, 0, 0, 0.5))`;
-        }
-        else
-        {
-          imagem.style.filter = `invert() blur(${blurValue}) brightness(${brightnessValue}) contrast(${contrastValue}) saturate(${saturateValue}) hue-rotate(${hueValue}) grayscale(${grayscaleValue}) sepia(${sepiaValue}) opacity(${opacityValue}) drop-shadow(${dropShadowValue} ${dropShadowValue} 10px rgba(0, 0, 0, 0.5))`;
-     
-        }
-         
+      else {
+        imagem.style.filter = `invert() blur(${blurValue}) brightness(${brightnessValue}) contrast(${contrastValue}) saturate(${saturateValue}) hue-rotate(${hueValue}) grayscale(${grayscaleValue}) sepia(${sepiaValue}) opacity(${opacityValue}) drop-shadow(${dropShadowValue} ${dropShadowValue} 10px rgba(0, 0, 0, 0.5))`;
+
       }
-      else
-        {
-          imagem.style.filter = `blur(${blurValue}) brightness(${brightnessValue}) contrast(${contrastValue}) saturate(${saturateValue}) hue-rotate(${hueValue}) grayscale(${grayscaleValue}) sepia(${sepiaValue}) opacity(${opacityValue}) drop-shadow(${dropShadowValue} ${dropShadowValue} 10px rgba(0, 0, 0, 0.5))`;
-     
-        }
-  
-  
+
     }
-  
-    // Adicionando listeners para atualizar os filtros em tempo real
-    blurInput.addEventListener('input', aplicarFiltros);
-    brightnessInput.addEventListener('input', aplicarFiltros);
-    contrastInput.addEventListener('input', aplicarFiltros);
-    saturateInput.addEventListener('input', aplicarFiltros);
-    hueInput.addEventListener('input', aplicarFiltros);
-    grayscaleInput.addEventListener('input', aplicarFiltros);
-    sepiaInput.addEventListener('input', aplicarFiltros);
-    opacityInput.addEventListener('input', aplicarFiltros);
-    dropShadowInput.addEventListener('input', aplicarFiltros);
-  
-  
-  
-    function downloadImagem() {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      canvas.width = imagem.width*10;
-      canvas.height = imagem.height*10;
-  
-      // Aplica os filtros ao contexto do canvas
-      ctx.filter = window.getComputedStyle(imagem).filter;
-      ctx.drawImage(imagem, 0, 0, canvas.width, canvas.height);
-  
-      // Converte o canvas para um data URL e cria um link de download
-      const dataURL = canvas.toDataURL('image/png');
-      const link = document.createElement('a');
-      link.href = dataURL;
-      link.download = 'imagem_filtrada.jpg';
-  
-      // Simula um clique no link para iniciar o download
-      link.click();
+    else {
+      imagem.style.filter = `blur(${blurValue}) brightness(${brightnessValue}) contrast(${contrastValue}) saturate(${saturateValue}) hue-rotate(${hueValue}) grayscale(${grayscaleValue}) sepia(${sepiaValue}) opacity(${opacityValue}) drop-shadow(${dropShadowValue} ${dropShadowValue} 10px rgba(0, 0, 0, 0.5))`;
+
     }
-  
-  
-  </script>
+
+    console.clear();
+    console.log('blurValue = ' + blurInput.value + 'px');
+    console.log('brightnessValue = ' + brightnessInput.value + '%');
+    console.log('contrastValue = ' + contrastInput.value + '%');
+    console.log('saturateValue = ' + saturateInput.value + '%');
+    console.log('hueValue = ' + hueInput.value + 'deg');
+    console.log('grayscaleValue = ' + grayscaleInput.value + '%');
+    console.log('sepiaValue = ' + sepiaInput.value + '%');
+    console.log('opacityValue = ' + opacityInput.value + '%');
+    console.log('dropShadowValue = ' + dropShadowInput.value + 'px');
+
+
+  }
+
+  // Adicionando listeners para atualizar os filtros em tempo real
+  blurInput.addEventListener('input', aplicarFiltros);
+  brightnessInput.addEventListener('input', aplicarFiltros);
+  contrastInput.addEventListener('input', aplicarFiltros);
+  saturateInput.addEventListener('input', aplicarFiltros);
+  hueInput.addEventListener('input', aplicarFiltros);
+  grayscaleInput.addEventListener('input', aplicarFiltros);
+  sepiaInput.addEventListener('input', aplicarFiltros);
+  opacityInput.addEventListener('input', aplicarFiltros);
+  dropShadowInput.addEventListener('input', aplicarFiltros);
+
+
+
+  function downloadImagem() {
+    imagem.style.display = 'none';
+
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = imagem.width * 10;
+    canvas.height = imagem.height * 10;
+
+    // Aplica os filtros ao contexto do canvas
+    ctx.filter = window.getComputedStyle(imagem).filter;
+    ctx.drawImage(imagem, 0, 0, canvas.width, canvas.height);
+
+    // Converte o canvas para um data URL e cria um link de download
+    const dataURL = canvas.toDataURL('image/png');
+    const link = document.createElement('a');
+    link.href = dataURL;
+    link.download = 'imagem_filtrada.jpg';
+
+    // Simula um clique no link para iniciar o download
+    link.click();
+    imagem.style.display = 'block';
+  }
+
+
+</script>
+
 </html>
