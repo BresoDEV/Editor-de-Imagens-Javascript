@@ -317,8 +317,8 @@
 
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
-    canvas.width = imagem.width * 5;
-    canvas.height = imagem.height * 5;
+    canvas.width = imagem.width * 2;
+    canvas.height = imagem.height * 2;
 
     // Aplica os filtros ao contexto do canvas
     ctx.filter = window.getComputedStyle(imagem).filter;
