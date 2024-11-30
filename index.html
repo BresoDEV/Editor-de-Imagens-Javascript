@@ -1,193 +1,550 @@
 <!DOCTYPE html>
+
 <html lang="pt-br">
 
+
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Photoshp</title>
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+
 </head>
+
 <style>
-  img {
-    width: 95%;
-    z-index: 0;
-  }
 
-  html {
-    background-color: rgb(0, 0, 0);
-  }
+    * {
 
-  summary,
-  ul,
-  li,
-  details {
-    border-radius: 5px;
-    background-color: deepskyblue;
-    padding: 5px;
-    color: aliceblue;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bolder;
-    cursor: pointer;
-    text-decoration: none;
-  }
+        -webkit-tap-highlight-color: transparent;
 
-  input {
-    text-align: right;
-    align-items: flex-end;
-    align-content: right;
-  }
+     -webkit-touch-callout: none;
+
+        margin: 0;
+
+        padding: 0;
+
+        border: none;
+
+        font-size: 3vh;
+
+        cursor: pointer;
+
+    }
+
+
+
+    html,
+
+    body {
+
+        background-color: #333;
+
+    }
+
+
+
+    img {
+
+        width: 100%;
+
+    }
+
+
+
+    .img_box {
+
+        width: 90%;
+
+        max-width: 600px;
+
+        max-height: 80vh;
+
+        overflow-y: auto;
+
+
+
+    }
+
+
+
+    .topo {
+
+        width: 100%;
+
+        position: fixed;
+
+        height: 5vh;
+
+        background-color: rgba(158, 157, 157, 0.378);
+
+        top: 0;
+
+        color: aliceblue;
+
+        padding-left: 10px;
+
+    }
+
+
+
+
+
+
+
+    .zoom {
+
+        width: 90%;
+
+        position: fixed;
+
+        bottom: 2vh;
+
+        height: 5vh;
+
+        left: 5%;
+
+        cursor: pointer;
+
+    }
+
+
+
+    .menu {
+
+        display: none;
+
+    }
+
+
+
+    button {
+
+        background-color: #333;
+
+        color: aliceblue;
+
+        border: none;
+
+        cursor: pointer;
+
+        border-radius: 5px;
+
+    }
+
+
+
+    .popup {
+
+        border-radius: 15px;
+
+        position: fixed;
+
+        width: 60%;
+
+        padding: 10px;
+
+        margin-top: 30vh;
+
+        margin-left: 20%;
+
+        background-color: rgb(130, 131, 131);
+
+        color: aliceblue;
+
+        display: none;
+
+    }
+
+
+
+    .popup input {
+
+        border-radius: 3px;
+
+        padding: 5px;
+
+        background-color: rgba(65, 65, 65, 0.868);
+
+        color: aliceblue;
+
+        width: 30vw;
+
+
+
+    }
+
 </style>
 
+
+
 <body>
-  <input type="file" name="Abrir" id="Abrir" onchange="abririmg()" style="display:none">
-  <details>
-    <summary>Menu</summary>
-    <ul>
-      <li><span id="Novo">Novo</span></li>
-      <li><span type="file" name="Abrir2" id="Abrir2" onchange="clicar()">Abrir</span></li>
-      <li><span id="Salvar" onclick="downloadImagem()">Salvar</span></li>
-
-    </ul>
-  </details>
-  <details>
-    <summary>Filtros</summary>
-    <ul>
-      <li><span id="pretoebranco">Preto e branco</span></li>
-      <li><span id="negativo">Negativo</span></li>
-      <li><span onclick="IPhone()">IPhone Style</span></li>
-      <li><span onclick="Old()">Old Sepia</span></li>
-
-    </ul>
-  </details>
-
-  <details>
-    <summary>Efeitos</summary>
-    <ul>
-      <li>
-        <label for="blur">Blur:</label>
-        <input type="range" id="blur" min="0" max="20" value="0">
-      </li>
-      <li>
-        <label for="brightness">Brilho:</label>
-        <input type="range" id="brightness" min="0" max="200" value="100">
-
-      </li>
-      <li>
-        <label for="contrast">Contraste:</label>
-        <input type="range" id="contrast" min="0" max="200" value="100">
-
-      </li>
-      <li>
-        <label for="saturate">Saturação:</label>
-        <input type="range" id="saturate" min="0" max="200" value="100">
-
-      </li>
-      <li>
-        <label for="hue">Rotação de Cor (Hue):</label>
-        <input type="range" id="hue" min="0" max="360" value="0">
-
-      </li>
-      <li>
-        <label for="grayscale">Escala de Cinza:</label>
-        <input type="range" id="grayscale" min="0" max="100" value="0">
-
-      </li>
-      <li>
-        <label for="sepia">Sepia:</label>
-        <input type="range" id="sepia" min="0" max="100" value="0">
-
-      </li>
-      <li>
-        <label for="opacity">Opacidade:</label>
-        <input type="range" id="opacity" min="0" max="100" value="100">
-
-      </li>
-      <li>
-        <label for="drop-shadow">Sombra:</label>
-        <input type="range" id="drop-shadow" min="0" max="20" value="0">
-
-      </li>
-
-    </ul>
-  </details>
 
 
-  <br>
 
-  <center>
-    <img id="imagem" src="capabreso.jpg" alt="">
-  </center>
+    <div class="popup" id="popup">
+
+        <center>
+
+            <table>
+
+                <tr>
+
+                    <td>Largura:</td>
+
+                    <td><input type="number" id="Largura"></td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Altura:</td>
+
+                    <td><input type="number" id="Altura"></td>
+
+                </tr>
+
+
+
+            </table>
+
+            <table>
+
+                <tr>
+
+                    <th><button id="Cancelar" style="padding:10px ;">Cancelar</button></th>
+
+                    <th><button id="SalvarPopup" style="padding:10px ;">Salvar</button></th>
+
+                </tr>
+
+            </table>
+
+
+
+        </center>
+
+    </div>
+
+
+
+
+
+
+
+    <input type="file" name="Abrir" id="Abrir" onchange="abririmg()" style="display:none">
+
+
+
+    <br>
+
+
+
+    <div class="topo" id="topo">
+
+        <h2 style="cursor: pointer;" id="Menu">Menu</h2>
+
+        <div id="menu" class="menu">
+
+
+
+            <br>
+
+            <center>
+
+                <table style="width: 90%;">
+
+                    <tr>
+
+                        <th><button style="width: 90%;" id="Novo">Novo</button></th>
+
+                        <th><button style="width: 90%;" id="Abrir2" onchange="abririmg()">Abrir</button></th>
+
+                       
+
+                    </tr>
+
+
+
+                    <tr>
+
+                        <th><button style="width: 90%;" onclick="reiniciar()">Reiniciar</button></th>
+
+                        <th><button style="width: 90%;" id="Salvar">Salvar</button></th>
+
+                    </tr>
+
+                </table>
+
+            </center>
+
+            <!----------------------------------------------------->
+
+            <br>
+
+
+
+            <details>
+
+                <summary>Filtros</summary>
+
+                <center>
+
+                    <table style="width: 90%;">
+
+                        <tr>
+
+                            <th><button style="width: 90%;" id="pretoebranco">Preto e Branco</button></th>
+
+                            <th><button style="width: 90%;" id="negativo">Negativo</button></th>
+
+
+
+                        </tr>
+
+                        <tr>
+
+                            <th><button style="width: 90%;" onclick="IPhone()">IPhone Style</button></th>
+
+                            <th><button style="width: 90%;" onclick="Old()">Sepia</button></th>
+
+
+
+                        </tr>
+
+                    </table>
+
+                </center>
+
+            </details>
+
+            <!-------------------------------------------------->
+
+            <br>
+
+            <details>
+
+                <summary>Efeitos</summary>
+
+                <center>
+
+                    <table style="width: 90%;">
+
+
+
+                        <tr>
+
+                            <th>Blur:</th>
+
+                            <th><input type="range" id="blur" min="0" max="20" value="0"></th>
+
+                        </tr>
+
+
+
+                        <tr>
+
+                            <th>Brilho:</th>
+
+                            <th><input type="range" id="brightness" min="0" max="200" value="100"></th>
+
+                        </tr>
+
+
+
+                        <tr>
+
+                            <th>Contraste:</th>
+
+                            <th><input type="range" id="contrast" min="0" max="200" value="100"></th>
+
+                        </tr>
+
+
+
+                        <tr>
+
+                            <th>Saturação:</th>
+
+                            <th><input type="range" id="saturate" min="0" max="200" value="100"></th>
+
+                        </tr>
+
+
+
+                        <tr>
+
+                            <th>Rotação de Cor (Hue):</th>
+
+                            <th><input type="range" id="hue" min="0" max="360" value="0"></th>
+
+                        </tr>
+
+
+
+                        <tr>
+
+                            <th>Escala de Cinza:</th>
+
+                            <th><input type="range" id="grayscale" min="0" max="100" value="0"></th>
+
+                        </tr>
+
+
+
+                        <tr>
+
+                            <th>Sepia:</th>
+
+                            <th><input type="range" id="sepia" min="0" max="100" value="0"></th>
+
+                        </tr>
+
+
+
+                        <tr>
+
+                            <th>Opacidade:</th>
+
+                            <th><input type="range" id="opacity" min="0" max="100" value="100"></th>
+
+                        </tr>
+
+
+
+                        <tr>
+
+                            <th>Sombra:</th>
+
+                            <th><input type="range" id="drop-shadow" min="0" max="20" value="0"></th>
+
+                        </tr>
+
+
+
+                    </table>
+
+                </center>
+
+            </details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+
+    <center>
+
+        <br>
+
+        <div class="img_box">
+
+            <img src="" alt="" id="foto">
+
+        </div>
+
+
+
+        <input type="range" name="" id="zoom" class="zoom">
+
+    </center>
+
+
+
+
+
+
 
 </body>
+
 <script>
-  const imagem = document.getElementById('imagem');
-  const blurInput = document.getElementById('blur');
-  const brightnessInput = document.getElementById('brightness');
-  const contrastInput = document.getElementById('contrast');
-  const saturateInput = document.getElementById('saturate');
-  const hueInput = document.getElementById('hue');
-  const grayscaleInput = document.getElementById('grayscale');
-  const sepiaInput = document.getElementById('sepia');
-  const opacityInput = document.getElementById('opacity');
-  const dropShadowInput = document.getElementById('drop-shadow');
-
-  const Arquivo = document.getElementById('Arquivo');
-  const Filtros = document.getElementById('Filtros');
-  const Efeitos = document.getElementById('Efeitos');
 
 
-  //const menuArquivo = document.getElementById('menuArquivo');
-  const Novo = document.getElementById('Novo');
-  const Abrir = document.getElementById('Abrir');
-  const Abrir2 = document.getElementById('Abrir2');
-  const Salvar = document.getElementById('Salvar');
-  const Reiniciar = document.getElementById('Reiniciar');
 
+    const blurInput = document.getElementById('blur');
 
-  const menuFiltros = document.getElementById('menuFiltros');
-  const pretoebranco = document.getElementById('pretoebranco');
-  const negativo = document.getElementById('negativo');
+    const brightnessInput = document.getElementById('brightness');
 
-  const menuEfeitos = document.getElementById('menuEfeitos');
+    const contrastInput = document.getElementById('contrast');
+
+    const saturateInput = document.getElementById('saturate');
+
+    const hueInput = document.getElementById('hue');
+
+    const grayscaleInput = document.getElementById('grayscale');
+
+    const sepiaInput = document.getElementById('sepia');
+
+    const opacityInput = document.getElementById('opacity');
+
+    const dropShadowInput = document.getElementById('drop-shadow');
 
 
 
 
 
-  setInterval(() => {
-    //nav.style.zIndex = '100';
-    imagem.style.zIndex = '-1';
-    //imagem.style.position = 'fixed';
-  }, 1);
+    const Cancelar = document.getElementById('Cancelar')
+
+    const SalvarPopup = document.getElementById('SalvarPopup')
+
+    const Altura = document.getElementById('Altura')
+
+    const Largura = document.getElementById('Largura')
+
+    const popup = document.getElementById('popup')
+
+    const Salvar = document.getElementById('Salvar')
 
 
 
-  function IPhone() {
-    brightnessInput.value = 87;
-    contrastInput.value = 146;
-    saturateInput.value = 117;
-    aplicarFiltros();
-  }
+    const Novo = document.getElementById('Novo')
 
-  function Old() {
+    const Abrir2 = document.getElementById('Abrir2')
 
-    brightnessInput.value = 108;
-    contrastInput.value = 200;
-    saturateInput.value = 0;
-    hueInput.value = 0;
-    grayscaleInput.value = 67;
-    sepiaInput.value = 100;
-    opacityInput.value = 100;
-    dropShadowInput.value = 0;
-    aplicarFiltros();
-  }
+    const Abrir = document.getElementById('Abrir')
+
+    const zoom = document.getElementById('zoom')
+
+    const foto = document.getElementById('foto')
+
+    const menu = document.getElementById('menu')
+
+    const Menu = document.getElementById('Menu')
+
+    const topo = document.getElementById('topo')
+
+    const Tamtopo = topo.offsetHeight
 
 
 
+    setInterval(() => {
 
+        topo.style.zIndex = '100';
 
+        popup.style.zIndex = '100';
 
-
+    }, 1);
 
 
 
@@ -195,147 +552,498 @@
 
 
 
+    //--------------------------------------------
 
-  var aplicougrayscale = false;
-  var aplicounegativo = false;
 
-  pretoebranco.addEventListener('click', () => {
-    //clicar
-    aplicougrayscale = !aplicougrayscale;
-    if (aplicougrayscale)
-      imagem.style.filter = 'grayscale(1)';
-    else
-      imagem.style.filter = 'grayscale(0)';
 
-  });
+    zoom.addEventListener('input', () => {
 
-  negativo.addEventListener('click', () => {
-    //clicar
-    aplicounegativo = !aplicounegativo;
-    if (aplicounegativo)
-      imagem.style.filter = 'invert(1)';
-    else
-      imagem.style.filter = 'invert(0)';
-  });
+        foto.style.width = zoom.value + 'px'
+
+    })
 
 
 
 
 
-  Abrir2.addEventListener('click', () => {
-    //clicar
-    Abrir.click();
-  });
 
 
-  function abririmg() {
-    if (Abrir.files && Abrir.files[0]) {
-      const r = new FileReader();
-      r.onload = function (e) {
-        imagem.src = e.target.result;
-      };
-      r.readAsDataURL(Abrir.files[0]);
+
+
+
+
+    //=====================================
+
+
+
+    Salvar.addEventListener('click', () => {
+
+
+
+        topo.style.height = Tamtopo + 'px'
+
+        menu.style.display = 'none'
+
+        Menu.innerHTML = 'Menu'
+
+
+
+        Altura.value = foto.height
+
+        Largura.value = foto.width
+
+
+
+        popup.style.display = 'block'
+
+
+
+    });
+
+
+
+    Cancelar.addEventListener('click', () => {
+
+        popup.style.display = 'none'
+
+    });
+
+
+
+    SalvarPopup.addEventListener('click', () => {
+
+        downloadImagem()
+
+    });
+
+
+
+
+
+
+
+    //=================================
+
+
+
+    Menu.addEventListener('click', () => {
+
+        if (topo.offsetHeight === Tamtopo) {
+
+            menu.style.display = 'block'
+
+            topo.style.height = '80vh'
+
+            Menu.innerHTML = 'X'
+
+        } else {
+
+            topo.style.height = Tamtopo + 'px'
+
+            menu.style.display = 'none'
+
+            Menu.innerHTML = 'Menu'
+
+        }
+
+
+
+
+
+    });
+
+
+
+
+
+    Novo.addEventListener('click', () => {
+
+        window.location.reload();
+
+    });
+
+
+
+    Abrir2.addEventListener('click', () => {
+
+        //clicar
+
+        Abrir.click();
+
+    });
+
+
+
+
+
+
+
+    function abririmg() {
+
+        if (Abrir.files && Abrir.files[0]) {
+
+            const r = new FileReader();
+
+            r.onload = function (e) {
+
+
+
+                foto.src = e.target.result;
+
+
+
+                //aplicar min e max na barra de zoom
+
+                var maxWidth = foto.offsetWidth
+
+                zoom.min = foto.offsetWidth - 5
+
+                zoom.max = (foto.offsetWidth * 5)
+
+                zoom.value = foto.offsetWidth
+
+            };
+
+            r.readAsDataURL(Abrir.files[0]);
+
+        }
+
     }
-  }
 
 
 
-  Novo.addEventListener('click', () => {
-    window.location.reload();
-  });
+    function downloadImagem() {
+
+        //foto.style.display = 'none';
 
 
 
+        const canvas = document.createElement('canvas');
+
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = Largura.value;
+
+        canvas.height = Altura.value;
 
 
 
-  function aplicarFiltros() {
-    const blurValue = blurInput.value + 'px';
-    const brightnessValue = brightnessInput.value + '%';
-    const contrastValue = contrastInput.value + '%';
-    const saturateValue = saturateInput.value + '%';
-    const hueValue = hueInput.value + 'deg';
-    const grayscaleValue = grayscaleInput.value + '%';
-    const sepiaValue = sepiaInput.value + '%';
-    const opacityValue = opacityInput.value + '%';
-    const dropShadowValue = dropShadowInput.value + 'px';
+        // Aplica os filtros ao contexto do canvas
 
-    if (aplicougrayscale) {
-      if (aplicounegativo) {
-        imagem.style.filter = `invert() grayscale(1) blur(${blurValue}) brightness(${brightnessValue}) contrast(${contrastValue}) saturate(${saturateValue}) hue-rotate(${hueValue}) grayscale(${grayscaleValue}) sepia(${sepiaValue}) opacity(${opacityValue}) drop-shadow(${dropShadowValue} ${dropShadowValue} 10px rgba(0, 0, 0, 0.5))`;
-      }
-      else {
-        imagem.style.filter = `grayscale(1) blur(${blurValue}) brightness(${brightnessValue}) contrast(${contrastValue}) saturate(${saturateValue}) hue-rotate(${hueValue}) grayscale(${grayscaleValue}) sepia(${sepiaValue}) opacity(${opacityValue}) drop-shadow(${dropShadowValue} ${dropShadowValue} 10px rgba(0, 0, 0, 0.5))`;
+        ctx.filter = window.getComputedStyle(foto).filter;
 
-      }
+        ctx.drawImage(foto, 0, 0, canvas.width, canvas.height);
+
+
+
+        // Converte o canvas para um data URL e cria um link de download
+
+        const dataURL = canvas.toDataURL('image/png');
+
+        const link = document.createElement('a');
+
+        link.href = dataURL;
+
+        link.download = 'imagem_filtrada.jpg';
+
+
+
+        // Simula um clique no link para iniciar o download
+
+        link.click();
+
+        //foto.style.display = 'block';
+
+
+
+        popup.style.display = 'none'
 
     }
-    else if (aplicounegativo) {
-      if (aplicougrayscale) {
-        imagem.style.filter = `invert() grayscale(1) blur(${blurValue}) brightness(${brightnessValue}) contrast(${contrastValue}) saturate(${saturateValue}) hue-rotate(${hueValue}) grayscale(${grayscaleValue}) sepia(${sepiaValue}) opacity(${opacityValue}) drop-shadow(${dropShadowValue} ${dropShadowValue} 10px rgba(0, 0, 0, 0.5))`;
-      }
-      else {
-        imagem.style.filter = `invert() blur(${blurValue}) brightness(${brightnessValue}) contrast(${contrastValue}) saturate(${saturateValue}) hue-rotate(${hueValue}) grayscale(${grayscaleValue}) sepia(${sepiaValue}) opacity(${opacityValue}) drop-shadow(${dropShadowValue} ${dropShadowValue} 10px rgba(0, 0, 0, 0.5))`;
 
-      }
+
+
+
+
+
+
+    function aplicarFiltros() {
+
+        const blurValue = blurInput.value + 'px';
+
+        const brightnessValue = brightnessInput.value + '%';
+
+        const contrastValue = contrastInput.value + '%';
+
+        const saturateValue = saturateInput.value + '%';
+
+        const hueValue = hueInput.value + 'deg';
+
+        const grayscaleValue = grayscaleInput.value + '%';
+
+        const sepiaValue = sepiaInput.value + '%';
+
+        const opacityValue = opacityInput.value + '%';
+
+        const dropShadowValue = dropShadowInput.value + 'px';
+
+
+
+        if (aplicougrayscale) {
+
+            if (aplicounegativo) {
+
+                foto.style.filter = `invert() grayscale(1) blur(${blurValue}) brightness(${brightnessValue}) contrast(${contrastValue}) saturate(${saturateValue}) hue-rotate(${hueValue}) grayscale(${grayscaleValue}) sepia(${sepiaValue}) opacity(${opacityValue}) drop-shadow(${dropShadowValue} ${dropShadowValue} 10px rgba(0, 0, 0, 0.5))`;
+
+            }
+
+            else {
+
+                foto.style.filter = `grayscale(1) blur(${blurValue}) brightness(${brightnessValue}) contrast(${contrastValue}) saturate(${saturateValue}) hue-rotate(${hueValue}) grayscale(${grayscaleValue}) sepia(${sepiaValue}) opacity(${opacityValue}) drop-shadow(${dropShadowValue} ${dropShadowValue} 10px rgba(0, 0, 0, 0.5))`;
+
+
+
+            }
+
+
+
+        }
+
+        else if (aplicounegativo) {
+
+            if (aplicougrayscale) {
+
+                foto.style.filter = `invert() grayscale(1) blur(${blurValue}) brightness(${brightnessValue}) contrast(${contrastValue}) saturate(${saturateValue}) hue-rotate(${hueValue}) grayscale(${grayscaleValue}) sepia(${sepiaValue}) opacity(${opacityValue}) drop-shadow(${dropShadowValue} ${dropShadowValue} 10px rgba(0, 0, 0, 0.5))`;
+
+            }
+
+            else {
+
+                foto.style.filter = `invert() blur(${blurValue}) brightness(${brightnessValue}) contrast(${contrastValue}) saturate(${saturateValue}) hue-rotate(${hueValue}) grayscale(${grayscaleValue}) sepia(${sepiaValue}) opacity(${opacityValue}) drop-shadow(${dropShadowValue} ${dropShadowValue} 10px rgba(0, 0, 0, 0.5))`;
+
+
+
+            }
+
+
+
+        }
+
+        else {
+
+            foto.style.filter = `blur(${blurValue}) brightness(${brightnessValue}) contrast(${contrastValue}) saturate(${saturateValue}) hue-rotate(${hueValue}) grayscale(${grayscaleValue}) sepia(${sepiaValue}) opacity(${opacityValue}) drop-shadow(${dropShadowValue} ${dropShadowValue} 10px rgba(0, 0, 0, 0.5))`;
+
+
+
+        }
+
+
+
+        console.clear();
+
+        console.log('blurValue = ' + blurInput.value + 'px');
+
+        console.log('brightnessValue = ' + brightnessInput.value + '%');
+
+        console.log('contrastValue = ' + contrastInput.value + '%');
+
+        console.log('saturateValue = ' + saturateInput.value + '%');
+
+        console.log('hueValue = ' + hueInput.value + 'deg');
+
+        console.log('grayscaleValue = ' + grayscaleInput.value + '%');
+
+        console.log('sepiaValue = ' + sepiaInput.value + '%');
+
+        console.log('opacityValue = ' + opacityInput.value + '%');
+
+        console.log('dropShadowValue = ' + dropShadowInput.value + 'px');
+
+
+
+
 
     }
-    else {
-      imagem.style.filter = `blur(${blurValue}) brightness(${brightnessValue}) contrast(${contrastValue}) saturate(${saturateValue}) hue-rotate(${hueValue}) grayscale(${grayscaleValue}) sepia(${sepiaValue}) opacity(${opacityValue}) drop-shadow(${dropShadowValue} ${dropShadowValue} 10px rgba(0, 0, 0, 0.5))`;
+
+
+
+    var aplicougrayscale = false;
+
+    var aplicounegativo = false;
+
+
+
+    // Adicionando listeners para atualizar os filtros em tempo real
+
+    blurInput.addEventListener('input', aplicarFiltros);
+
+    brightnessInput.addEventListener('input', aplicarFiltros);
+
+    contrastInput.addEventListener('input', aplicarFiltros);
+
+    saturateInput.addEventListener('input', aplicarFiltros);
+
+    hueInput.addEventListener('input', aplicarFiltros);
+
+    grayscaleInput.addEventListener('input', aplicarFiltros);
+
+    sepiaInput.addEventListener('input', aplicarFiltros);
+
+    opacityInput.addEventListener('input', aplicarFiltros);
+
+    dropShadowInput.addEventListener('input', aplicarFiltros);
+
+
+
+
+
+
+
+    function IPhone() {
+
+        brightnessInput.value = 87;
+
+        contrastInput.value = 146;
+
+        saturateInput.value = 117;
+
+        aplicarFiltros();
 
     }
 
-    console.clear();
-    console.log('blurValue = ' + blurInput.value + 'px');
-    console.log('brightnessValue = ' + brightnessInput.value + '%');
-    console.log('contrastValue = ' + contrastInput.value + '%');
-    console.log('saturateValue = ' + saturateInput.value + '%');
-    console.log('hueValue = ' + hueInput.value + 'deg');
-    console.log('grayscaleValue = ' + grayscaleInput.value + '%');
-    console.log('sepiaValue = ' + sepiaInput.value + '%');
-    console.log('opacityValue = ' + opacityInput.value + '%');
-    console.log('dropShadowValue = ' + dropShadowInput.value + 'px');
 
 
-  }
-
-  // Adicionando listeners para atualizar os filtros em tempo real
-  blurInput.addEventListener('input', aplicarFiltros);
-  brightnessInput.addEventListener('input', aplicarFiltros);
-  contrastInput.addEventListener('input', aplicarFiltros);
-  saturateInput.addEventListener('input', aplicarFiltros);
-  hueInput.addEventListener('input', aplicarFiltros);
-  grayscaleInput.addEventListener('input', aplicarFiltros);
-  sepiaInput.addEventListener('input', aplicarFiltros);
-  opacityInput.addEventListener('input', aplicarFiltros);
-  dropShadowInput.addEventListener('input', aplicarFiltros);
+    function Old() {
 
 
 
-  function downloadImagem() {
-    imagem.style.display = 'none';
+        brightnessInput.value = 108;
 
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = imagem.width * 2;
-    canvas.height = imagem.height * 2;
+        contrastInput.value = 200;
 
-    // Aplica os filtros ao contexto do canvas
-    ctx.filter = window.getComputedStyle(imagem).filter;
-    ctx.drawImage(imagem, 0, 0, canvas.width, canvas.height);
+        saturateInput.value = 0;
 
-    // Converte o canvas para um data URL e cria um link de download
-    const dataURL = canvas.toDataURL('image/png');
-    const link = document.createElement('a');
-    link.href = dataURL;
-    link.download = 'imagem_filtrada.jpg';
+        hueInput.value = 0;
 
-    // Simula um clique no link para iniciar o download
-    link.click();
-    imagem.style.display = 'block';
-  }
+        grayscaleInput.value = 67;
+
+        sepiaInput.value = 100;
+
+        opacityInput.value = 100;
+
+        dropShadowInput.value = 0;
+
+        aplicarFiltros();
+
+    }
+
+
+
+
+
+    const pretoebranco = document.getElementById('pretoebranco');
+
+    const negativo = document.getElementById('negativo');
+
+
+
+    pretoebranco.addEventListener('click', () => {
+
+        //clicar
+
+        aplicougrayscale = !aplicougrayscale;
+
+        if (aplicougrayscale)
+
+            foto.style.filter = 'grayscale(1)';
+
+        else
+
+            foto.style.filter = 'grayscale(0)';
+
+
+
+    });
+
+
+
+    negativo.addEventListener('click', () => {
+
+        //clicar
+
+        aplicounegativo = !aplicounegativo;
+
+        if (aplicounegativo)
+
+            foto.style.filter = 'invert(1)';
+
+        else
+
+            foto.style.filter = 'invert(0)';
+
+    });
+
+
+
+
+
+    function reiniciar(){
+
+        brightnessInput.value = 100;
+
+        blurInput.value = 0;
+
+        contrastInput.value = 100;
+
+        saturateInput.value = 100;
+
+        hueInput.value = 0;
+
+        grayscaleInput.value = 0;
+
+        sepiaInput.value = 0;
+
+        opacityInput.value = 100;
+
+        dropShadowInput.value = 0;
+
+		
+
+	
+
+	
+
+	if (aplicounegativo){
+
+	aplicounegativo = false
+
+            foto.style.filter = 'invert(0)';
+
+			}
+
+			
+
+			
+
+			if (aplicougrayscale)
+
+			{
+
+			aplicougrayscale = false
+
+            foto.style.filter = 'grayscale(0)';
+
+			}
+
+
+
+            aplicarFiltros()
+
+    }
+
 
 
 </script>
+
+
 
 </html>
